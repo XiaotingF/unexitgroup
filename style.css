@@ -1,0 +1,100 @@
+html,  body{
+	height: 100%;
+	width:100%;
+}
+
+.navbar{
+	/*background-color: #edcbe9;*/
+	font-size: 17px;
+}
+
+/*for the menu links default
+*/
+
+.navbar-default .navbar-nav li a{
+
+
+}
+
+.navbar-default .navbar-nav li a:hover{
+
+
+}
+
+#one{
+padding-top: 50px;
+	background: url(img3.jpg) no-repeat center center fixed;
+	display: table;
+	height: 100%;
+	position: relative;
+	width: 100%;
+	background-size: cover;
+}
+
+.landing-text{
+	/*display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+	padding-top: 50px;*/
+	text-align: right;
+	padding-top: 200px
+
+}
+
+.landing-text h1{
+	font-size: 500%;
+	color: #a55656;
+
+}
+
+.landing-text h3{
+	
+	color: #a55656;
+
+}
+
+.card{
+
+	background-color: rgba(196, 98, 119, 0.8);
+	border-radius: 10px;
+	padding-bottom: 10px;
+	
+
+
+	
+}
+
+.card-body h3{
+	padding-top: 10px;
+	text-align: center;
+	
+
+	
+}
+
+.modal-content{
+	text-align: center;
+}
+.card-body p{
+	text-align: center;
+}
+
+
+#log_button{
+	background-color: #cfd1d3;
+
+}
+
+#register_button{
+	
+	text-align: center;
+	
+
+
+}
+
+#regi{
+	text-align: center;
+}
+
+
