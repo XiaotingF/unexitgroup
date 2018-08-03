@@ -23,7 +23,7 @@ html,  body{
 
 #one{
 padding-top: 50px;
-	background: url(img3.jpg) no-repeat center center fixed;
+	background: url(home1.jpg) no-repeat center center fixed;
 	display: table;
 	height: 100%;
 	position: relative;
@@ -36,35 +36,35 @@ padding-top: 50px;
 	text-align: center;
 	vertical-align: middle;
 	padding-top: 50px;*/
-	text-align: right;
+	text-align: center;
 	padding-top: 200px
 
 }
 
 .landing-text h1{
 	font-size: 500%;
-	color: #a55656;
+	color: rgb(97, 131, 223);
 
 }
 
 .landing-text h3{
-	
-	color: #a55656;
 
+	color: rgb(97, 131, 223);
 }
 
 .card{
 
-	background-color: rgba(196, 98, 119, 0.8);
+	background-color: rgba(97, 131, 223, 0.5);
 	border-radius: 10px;
 	padding-bottom: 10px;
-	
+	color: white;
 
 
 	
 }
 
 .card-body h3{
+	
 	padding-top: 10px;
 	text-align: center;
 	
@@ -76,12 +76,15 @@ padding-top: 50px;
 	text-align: center;
 }
 .card-body p{
+	
 	text-align: center;
 }
 
 
 #log_button{
-	background-color: #cfd1d3;
+	background-color: rgb(107, 203, 207);
+	color: white;
+	text-align: center;
 
 }
 
@@ -95,6 +98,7 @@ padding-top: 50px;
 
 #regi{
 	text-align: center;
+	color:black;
 }
 
 
