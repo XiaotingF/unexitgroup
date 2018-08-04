@@ -23,12 +23,13 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                <a href="#" class="navbar-brand">THE LOGO</a>
+                
 
 		</div>
 
 		<div class="collapse navbar-collapse" id="mainNavBar">
                 <ul class="nav navbar-nav ">
+                	<li><a href="#" class="navbar-brand"><img src="logo.png"></a></li>
                     <li class="active"><a href='#'>Home</a></li>
                     <li><a href="#">About</a></li>
                     <li><a href="#">Contact</a></li>
@@ -52,7 +53,7 @@
 	
 </div>
 </div>
-<div class="col-lg-4">
+<div class="col-lg-4 col-md-4 col-sm-4  col-xs-10">
 <div class="card">
 	<div class ="card-body">
 		<h3>Log In</h3>
@@ -61,11 +62,11 @@
 
         <div class="form-group">
     <label for="inputemail1">Email address</label>
-    <input type="email" name = "email1" class="form-control" id="inputemail1"  placeholder="Enter email" >
+    <input type="email" name = "email1" class="form-control" id="inputemail1"  placeholder="Enter email" required>
   </div>
   <div class="form-group">
     <label for="inputpassword1">Password</label>
-    <input type="password" name ="password1" class="form-control" id="inputpassword1" placeholder="Password" >
+    <input type="password" name ="password1" class="form-control" id="inputpassword1" placeholder="Password" required>
   </div>
  <button id= log_button type="submit" class="btn btn-secondary">Log In</button><br></form>
  
@@ -88,11 +89,11 @@
   				<form method="post" action="" name="signUpForm" onsubmit="return validateSignUp()">
   					<div class="form-group">
    					 <label for="inputfname">First Name</label>
-  					  <input type="text" name = "firstname" class="form-control" id="inputfname"  placeholder="First Name" >
+  					  <input type="text" name = "firstname" class="form-control" id="inputfname"   placeholder="First Name" required>
  					 </div>
  					 <div class="form-group">
    					 <label for="inputlname">Last Name</label>
-  					  <input type="text" name = "lastname"class="form-control" id="inputlname"  placeholder="Last Name" >
+  					  <input type="text" name = "lastname" class="form-control" id="inputlname"  placeholder="Last Name" required>
  					 </div>
   					<div class="form-group">
    					 <label for="inputemail">Email address</label>
@@ -100,11 +101,11 @@
  					 </div>
  					 <div class="form-group">
     					<label for="password1">Password</label>
-					    <input type="password" name="password2" class="form-control" id="password1" placeholder="Password" >
+					    <input type="password" name="password2" class="form-control" id="password1" minlength = 6 placeholder="Password" required>
 					  </div>
 					  <div class="form-group">
 				    <label for="password2">Confirm Password</label>
-				    <input type="password" name="conpassword2"class="form-control" id="password2" placeholder="Confirm Password" >
+				    <input type="password" name="conpassword2"class="form-control" id="password2" minlength = 6 placeholder="Confirm Password" required>
 				  </div>
 			</div>
 
