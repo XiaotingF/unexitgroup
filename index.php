@@ -23,12 +23,13 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                <a href="#" class="navbar-brand">THE LOGO</a>
+                
 
 		</div>
 
 		<div class="collapse navbar-collapse" id="mainNavBar">
                 <ul class="nav navbar-nav ">
+                	<li><a href="#" class="navbar-brand"><img src="logo.png"></a></li>
                     <li class="active"><a href='#'>Home</a></li>
                     <li><a href="#">About</a></li>
                     <li><a href="#">Contact</a></li>
@@ -52,7 +53,7 @@
 	
 </div>
 </div>
-<div class="col-lg-4">
+<div class="col-lg-4 col-md-4 col-sm-4  col-xs-5">
 <div class="card">
 	<div class ="card-body">
 		<h3>Log In</h3>
@@ -61,11 +62,11 @@
 
         <div class="form-group">
     <label for="inputemail1">Email address</label>
-    <input type="email" name = "email1" class="form-control" id="inputemail1"  placeholder="Enter email" >
+    <input type="email" name = "email1" class="form-control" id="inputemail1"  placeholder="Enter email" required>
   </div>
   <div class="form-group">
     <label for="inputpassword1">Password</label>
-    <input type="password" name ="password1" class="form-control" id="inputpassword1" placeholder="Password" >
+    <input type="password" name ="password1" class="form-control" id="inputpassword1" placeholder="Password" required>
   </div>
  <button id= log_button type="submit" class="btn btn-secondary">Log In</button><br></form>
  
@@ -88,11 +89,11 @@
   				<form method="post" action="" name="signUpForm" onsubmit="return validateSignUp()">
   					<div class="form-group">
    					 <label for="inputfname">First Name</label>
-  					  <input type="text" name = "firstname" class="form-control" id="inputfname"  placeholder="First Name" >
+  					  <input type="text" name = "firstname" class="form-control" id="inputfname"   placeholder="First Name" required>
  					 </div>
  					 <div class="form-group">
    					 <label for="inputlname">Last Name</label>
-  					  <input type="text" name = "lastname"class="form-control" id="inputlname"  placeholder="Last Name" >
+  					  <input type="text" name = "lastname" class="form-control" id="inputlname"  placeholder="Last Name" required>
  					 </div>
   					<div class="form-group">
    					 <label for="inputemail">Email address</label>
@@ -100,11 +101,11 @@
  					 </div>
  					 <div class="form-group">
     					<label for="password1">Password</label>
-					    <input type="password" name="password2" class="form-control" id="password1" placeholder="Password" >
+					    <input type="password" name="password2" class="form-control" id="password1" minlength = 6 placeholder="Password" required>
 					  </div>
 					  <div class="form-group">
 				    <label for="password2">Confirm Password</label>
-				    <input type="password" name="conpassword2"class="form-control" id="password2" placeholder="Confirm Password" >
+				    <input type="password" name="conpassword2"class="form-control" id="password2" minlength = 6 placeholder="Confirm Password" required>
 				  </div>
 			</div>
 
@@ -122,6 +123,7 @@
   </div>
  	
  </button>
+ 
     
         
 
@@ -138,17 +140,24 @@
 
 </div>
 
+<div id = "two">
+
+
+<div class="step">
+				<img src="step.png" style="width:100%; height:10%;" >
+</div>
+<br>
 <div class="two">
 
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-6">
-				<img src="img1.jpg" class="img-responsive">
+			
+			<div class="col-sm-5">
+				<img src="img1.jpg" class="img-responsive" >
 			</div>
 			<div class="col-sm-6 text-centre">
-				<h2>Find "the one" in 4 simple steps</h2>
-				<p>Some paragraph about the steps. Some paragraph about the steps.Some paragraph about the steps.Some paragraph about the steps </p>
-				<p>Some paragraph abou Some paragraph about the steps.Some paragraph about the steps.Some paragraph about the steps.Some paragraph about the steps.Some paragraph about the steps</p>
+
+
 			</div>
 		</div>
 		
@@ -203,6 +212,35 @@
 			
 		</div>
 	</div>
+	</div>
+	<br>
+	
+	<div id= "register_button">
+	<div id= "share-buttons">
+		
+	<!-- Facebook -->
+    <a href="http://www.facebook.com/sharer.php?u=http://wematch.com.s3-website-ap-southeast-2.amazonaws.com/index.html" target="_blank">
+        <img src="Sfacebook.png" alt="Facebook" />
+    </a>
+    
+    <!-- Google+ -->
+    <a href="https://plus.google.com/share?url=http://wematch.com.s3-website-ap-southeast-2.amazonaws.com/index.html" target="_blank">
+        <img src="Sgoogle.png" alt="Google" />
+    </a>
+    
+    <!-- Twitter -->
+    <a href="https://twitter.com/share?url=http://wematch.com.s3-website-ap-southeast-2.amazonaws.com/index.html" target="_blank">
+        <img src="Stwitter.png" alt="Twitter" />
+    </a>
+    
+    <!-- Tumblr -->
+    <a href="http://www.tumblr.com/share/link?url=http://wematch.com.s3-website-ap-southeast-2.amazonaws.com/index.html" target="_blank">
+        <img src="Stumblr.png" alt="Tumblr" />
+    </a>
+    </div>
+   <br>
+   <p>&copy; 2018 WeMatch<p></div>
+    
 	
 </footer>
 </body>
