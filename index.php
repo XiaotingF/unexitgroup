@@ -195,13 +195,15 @@
 		
 		<div class="col-sm-6">
 			<h3>About Us</h3><br>
-			<p>Small paragraph about us</p>
-
+			<p>Melbourne based online matchmaking<br> system. Specialising in matching all of <br>our users with the the ideal partners <br>that match their preferences
+			
+			</p>
 			
 		</div>
 		<div class="col-sm-6">
 			<h3>Contact Us</h3><br>
-			<p>Small paragraph about us</p>
+			<p>+1234567890
+				<br>124 La Trobe Street<br> Melbourne VIC 3000</p>
 
 			
 		</div>
