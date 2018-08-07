@@ -153,7 +153,7 @@
 		<div class="row">
 			
 			<div class="col-sm-5">
-				<img src="img1.jpg" class="img-responsive" >
+			<!-- <img src="img1.jpg" class="img-responsive" > -->
 			</div>
 			<div class="col-sm-6 text-centre">
 
@@ -168,19 +168,19 @@
 <div class="container">
 	
 	<div class="row">
-		<div class="col-lg-3 col-md-3 col-sm-6">
+		<div class="col-lg-3 col-md-3 col-sm-3">
 			<h4>Tom Smith</h4>
 			<p>Some paragraph abou how single people can use this site to find other single people. And what sets this website apart from other websites. And stuff</p>
 		</div>
-		<div class="col-lg-3 col-md-3 col-sm-6">
+		<div class="col-lg-3 col-md-3 col-sm-3">
 			<h4>Tom Smith</h4>
 			<p>Some paragraph abou how single people can use this site to find other single people. And what sets this website apart from other websites. And stuff</p>
 		</div>
-		<div class="col-lg-3 col-md-3 col-sm-6">
+		<div class="col-lg-3 col-md-3 col-sm-3">
 			<h4>Tom Smith</h4>
 			<p>Some paragraph abou how single people can use this site to find other single people. And what sets this website apart from other websites. And stuff</p>
 		</div>
-		<div class="col-lg-3 col-md-3 col-sm-6">
+		<div class="col-lg-3 col-md-3 col-sm-3">
 			<h4>Tom Smith</h4>
 			<p>Some paragraph abou how single people can use this site to find other single people. And what sets this website apart from other websites. And stuff</p>
 		</div>
@@ -190,24 +190,24 @@
 </div>
 </div>
 
-<footer class="container-fluid text-centre">
+<footer class="container">
 	<div class="row">
 		
-		<div class="col-sm-4">
+		<div class="col-sm-6">
 			<h3>About Us</h3><br>
 			<p>Small paragraph about us</p>
 
 			
 		</div>
-		<div class="col-sm-4">
-			<h3>About Us</h3><br>
+		<div class="col-sm-6">
+			<h3>Contact Us</h3><br>
 			<p>Small paragraph about us</p>
 
 			
 		</div>
 		<div class="col-sm-4">
-			<h3>About Us</h3><br>
-			<p>Small paragraph about us</p>
+			<!-- <h3>About Us</h3><br>
+			<p>Small paragraph about us</p> --->
 
 			
 		</div>
@@ -217,7 +217,7 @@
 	
 	<div id= "register_button">
 	<div id= "share-buttons">
-		
+		<h4>Share WeMatch</h4>
 	<!-- Facebook -->
     <a href="http://www.facebook.com/sharer.php?u=http://wematch.com.s3-website-ap-southeast-2.amazonaws.com/index.html" target="_blank">
         <img src="Sfacebook.png" alt="Facebook" />
