@@ -1,4 +1,19 @@
+function validateSignUp() {
 
+	var password = document.getElementById("password1")
+  , confirm_password = document.getElementById("password2");
+
+  if(password.value != confirm_password.value) {
+    confirm_password.setCustomValidity("Passwords Don't Match");
+    alert("Passwords do not match");
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+
+
+password.onchange = validateSignUp;
+confirm_password.onkeyup = validateSignUp;
+}
 
 
 function validateLogin() {
@@ -18,15 +33,27 @@ function validateLogin() {
 }
 
 
-
+/*
 function validateSignUp() {
 
 
 	var firstname = document.forms["signUpForm"]["firstname"].value;
-	var lastname = document.forms["signUpForm"]["lastname"].value;
 	var email = document.forms["signUpForm"]["email1"].value;
+
+	alert("Passwojhgjhgjhgkjhgjh hkkjhvgrds do not match");
+
 	var password = document.forms["signUpForm"]["password2"].value;
 	var password2 = document.forms["signUpForm"]["conpassword2"].value;
+
+	
+
+	if (password != password2) {
+
+
+		password2.setCustomValidity("Passwords do not match");
+
+	}
+
 
 	
 
@@ -38,12 +65,9 @@ function validateSignUp() {
 		return false;
 	}
 
-	if (password != password2) {
-		alert("Passwords do not match")
-		password2.setCustomValidity("Passwords do not match");
 
-	}
 
+	
 
 
 
@@ -59,7 +83,11 @@ function validatePassword(){
 }
 
 password.onchange = validatePassword;
-confirm_password.onkeyup = validatePassword;*/
+confirm_password.onkeyup = validatePassword;
 
 
 }
+*/
+
+
+

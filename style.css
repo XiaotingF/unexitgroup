@@ -36,6 +36,11 @@ padding-top: 50px;
 	background-size: cover;
 }
 
+.two{
+
+	background-color: rgba(97, 131, 223, 0.5);
+}
+
 .landing-text{
 	/*display: table-cell;
 	text-align: center;
@@ -105,3 +110,27 @@ padding-top: 50px;
 	text-align: center;
 	color:black;
 }
+
+
+
+#steps_list{
+	font-size: 25px;
+}
+
+#steps h2{
+color: black;
+
+}
+
+
+#steps{
+	color: white;
+}
+
+.fa{
+	font-size: 24px;
+	padding: 15px;
+}
+
+
+
