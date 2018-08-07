@@ -166,7 +166,7 @@
 </div>
 <div class="two">
 <div class="container">
-	
+		
 	<div class="row">
 		<div class="col-lg-3 col-md-3 col-sm-3">
 			<h4>Tom Smith</h4>
@@ -192,7 +192,7 @@
 
 <footer class="container">
 	<div class="row">
-		
+		<div id= "register_button">
 		<div class="col-sm-6">
 			<h3>About Us</h3><br>
 			<p>Melbourne based online matchmaking<br> system. Specialising in matching all of <br>our users with the the ideal partners <br>that match their preferences
@@ -213,6 +213,7 @@
 
 			
 		</div>
+	    </div>
 	</div>
 	</div>
 	<br>
