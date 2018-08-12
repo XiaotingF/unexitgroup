@@ -68,34 +68,35 @@
             </div>
         </div>
 
-        @if(isset(Auth::user()->email))
+        <?php if(isset(Auth::user()->email)): ?>
             <script>window.location="/main/successlogin";</script>
-        @endif
+        <?php endif; ?>
 
-        @if ($message = Session::get('error'))
+        <?php if($message = Session::get('error')): ?>
             <div class="alert alert-danger alert-block">
                 <button type="button" class="close" data-dismiss="alert">×</button>
-                <strong>{{ $message }}</strong>
+                <strong><?php echo e($message); ?></strong>
             </div>
-        @endif
+        <?php endif; ?>
 
-        @if (count($errors) > 0)
+        <?php if(count($errors) > 0): ?>
             <div class="alert alert-danger">
                 <ul>
-                    @foreach($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
+                    <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <li><?php echo e($error); ?></li>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </ul>
             </div>
-        @endif
+        <?php endif; ?>
 
         <div class="col-lg-4 col-md-4 col-sm-4  col-xs-10">
             <div class="card">
                 <div class ="card-body">
                     <h3>Log In</h3>
 
-                    <form method="post" action="{{url('/main/checklogin')}}" name="loginForm" onsubmit="return validateLogin()">
-                        {{ csrf_field() }}
+                    <form method="post" action="<?php echo e(url('/main/checklogin')); ?>" name="loginForm" onsubmit="return validateLogin()">
+                        <?php echo e(csrf_field()); ?>
+
                         <div class="form-group">
                             <label for="inputemail1">Email address</label>
                             <input type="email" name = "email" class="form-control" id="inputemail1"  placeholder="Enter email" required>
