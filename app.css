@@ -1,0 +1,67 @@
+.navbar{
+	background-color: #ffffff;
+	font-size: 17px;
+}
+
+.navbar-brand{
+	/*background-color: #edcbe9;*/
+	margin-top:-11px;
+}
+
+#mini_profile{
+	text-align: center;
+}
+
+#home_headers{
+
+	color: #ffffff;
+	font-family: 'Raleway', sans-serif;
+	
+
+}
+
+#home_headers h4{
+
+	padding-top: 20px;
+	font-family: 'Raleway', sans-serif;
+
+}
+
+#top-title{
+	text-align: center;
+}
+
+
+#top-title h4{
+font-family: 'Fjalla One', sans-serif;
+padding-bottom: 20px;
+
+}
+
+#top-title h1{
+
+font-family: 'Raleway', sans-serif;
+font-weight: bold;
+
+}
+
+#pref_form{
+	margin-left: 150px;
+	margin-right: 150px;
+}
+
+.card h3{
+
+	font-family: 'Fjalla One', sans-serif;
+
+}
+
+
+#home_cards .card{
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#maincontainer{
+	margin: -40px;
+	background: linear-gradient(#7fa5e2, #ffffff);
+}
