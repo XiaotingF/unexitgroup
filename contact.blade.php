@@ -9,26 +9,11 @@ body {
   background-size: cover;
 }
 
-.left-half {
-  background-color: rgba(112,149,251,0.8);
-  position: absolute;
-  left: 0px;
-  width: 50%;
-  height: 500px;
-}
-
-.right-half {
-  color: rgb(112,149,251);
-  background-color: rgba(64,64,151,0);
-  position: absolute;
-  right: 0px;
-  width: 50%;
-  height: 500px;
-}
-
 section {
   color: #fff;
   text-align: center;
+  background-image: url("img/home1.jpg");
+  background-size: cover;
 }
 
 h3{
@@ -36,27 +21,14 @@ h3{
   font-size: 2rem;
 }
 
-form{
-	color:black;
-}
-
-button {
-	zoom: 1.5;
-	background-color: rgb(112,149,251);
-	color: #fff;
-	border-width: 0px;
-	border-radius: 5px;
-	font-weight: 300;
-    cursor: pointer;
-}
-
 </style>
 <body>
+
 <section class="container">
 
-	<div class="left-half">
+	<div class="left-half-contact">
         <div id="top-title">
-        <h1 color>CONTACT DETAILS</h1>
+        <h1>CONTACT DETAILS</h1>
         <br>
         <h2>ADDRESS</h2>
         <h3>RMIT Building 80, Melbourne, AU</h3>
@@ -67,9 +39,9 @@ button {
         <h2>EMAIL</h2>
         <h3>wematch@wematch.com.au</h3>
         </div>
-    </div>
+  </div>
 
-    <div class="right-half">
+    <div class="right-half-contact">
    		<div id="top-title">
    		<h1>CONTACT US</h1>
    		<form>
@@ -86,9 +58,9 @@ button {
 	    <textarea  name="message" rows="10" placeholder="Enter your message" cols="39" required></textarea>
     <br>
     <br>
-	    <button type="submit" value="Send">Send</button>
+	    <button class="button-contact" type="submit" value="Send">Send</button>
 	    </form>
-   	    </div>
+   	  </div>
    	</div>
 
 </section>
