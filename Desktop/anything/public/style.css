@@ -1,0 +1,128 @@
+html,  body{
+	height: 100%;
+	width:100%;
+}
+
+.navbar{
+	background-color: #ffffff;
+	font-size: 17px;
+}
+
+.navbar-brand{
+	/*background-color: #edcbe9;*/
+	margin-top:-11px;
+}
+
+/*for the menu links default
+*/
+
+.navbar-default .navbar-nav li a{
+
+
+}
+
+.navbar-default .navbar-nav li a:hover{
+
+
+}
+
+#one{
+padding-top: 50px;
+	background: url(home1.jpg) no-repeat center center fixed;
+	display: table;
+	height: 100%;
+	position: relative;
+	width: 100%;
+	background-size: cover;
+}
+
+#two{
+background-color: rgba(29, 80, 220, 0.5);
+}
+
+.landing-text{
+	/*display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+	padding-top: 50px;*/
+	text-align: center;
+	padding-top: 200px
+
+}
+
+.landing-text h1{
+	font-size: 500%;
+	color: rgb(97, 131, 223);
+
+}
+
+.landing-text h3{
+
+	color: rgb(97, 131, 223);
+}
+
+.card{
+
+	background-color: rgba(97, 131, 223, 0.5);
+	border-radius: 10px;
+	padding-bottom: 10px;
+	left:50%;
+	
+}
+
+.card1{
+	background-color: rgba(97, 131, 223, 0.5);
+	border-radius: 50px;
+	padding: 20px;
+	
+}
+.card-body h3{
+	
+	padding-top: 10px;
+	text-align: center;
+	
+
+	
+}
+
+.modal-content{
+	text-align: center;
+}
+.card-body p{
+	
+	text-align: center;
+}
+
+
+#log_button{
+	background-color: rgb(107, 203, 207);
+	color: white;
+	text-align: center;
+	margin:auto;
+    display:block;
+
+
+}
+
+#register_button{
+	
+	text-align: center;
+	
+
+
+}
+
+#regi{
+	text-align: center;
+	color:black;
+}
+
+
+#share-buttons img {
+    width: 50px;
+    padding: 5px;
+    display: inline;
+
+    }
+
+
