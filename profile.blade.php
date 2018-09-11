@@ -30,14 +30,16 @@
         <br>
         <form method="post" action="/profile2">
         	<input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+        <div class="form-group">
         <label for="">1. Please confirm the gender of your desired partner.</label>
         <label for="male">Male</label>
         <input type="radio" name="q1" id="male" value="1" >
         <label for="female">Female</label>
         <input type="radio" name="q1" id="female" value="2">
-        </br>  
-        <br>
-
+        </div>
+       
+     <div class="form-group">
 <label for="q2">2. What is your marital status.</label>
 <select id="q2" name="q2"  data-component="dropdown" required>
             <option value="">  </option>
@@ -46,8 +48,9 @@
             <option value="3"> I am separated </option>
             <option value="4">  I am a widow/widower </option>
            </select>
-            <br><br>
-<label for="">3. What is your highest level of education?</label>
+       </div>
+            
+<label for="q3">3. What is your highest level of education?</label>
 
 <select id="q3" name="q3"  data-component="dropdown" required>
             <option value="">  </option>
@@ -140,10 +143,10 @@
           
 <input type="radio" name="q12" value="1"> Important 
 <input type="radio" name="q12" value="2"> Unimportant<br>
-            <br><br>
+            <br>
 
 
-<label for="q13">14. Which of the following statements applies to you most?  </label>
+<label for="q13">13. Which of the following statements applies to you most?  </label>
 <select id="q13" name="q13"  data-component="dropdown" required>
             <option value="">  </option>
             <option value="1"> I like helping others</option>
@@ -193,6 +196,8 @@
          <button class="btn btn-default" type="submit" value="submit">Submit</button>
         </form>
 	
+
+
 
 
 
