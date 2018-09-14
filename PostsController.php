@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 
-
+use DB;
 use Illuminate\Http\Request;
 use Image;
 use App\User;
@@ -65,12 +65,19 @@ public function profile($slug)
     
 }
 
-public function profile2(Request $request)
+
+
+
+
+public function updatePreferences(Request $request)
 {
 
 
       //$user = User::find($id);
     $user = Auth::user();
+
+
+
 
       $user->q1 = $request->input('q1');
       $user->q2 = $request->input('q2');
@@ -86,9 +93,16 @@ public function profile2(Request $request)
       $user->q10 = $request->input('q10');
       $user->q11 = $request->input('q11');
       $user->q12 = $request->input('q12');
-      $user->q13 = $request->input('q13');
-      $user->q14 = $request->input('q14');
-      $user->q15 = $request->input('q15');
+      $user->importance1 = $request->input('importance1');
+      $user->importance2 = $request->input('importance2');
+      $user->importance3 = $request->input('importance3');
+      $user->importance4 = $request->input('importance4');
+      $user->importance5 = $request->input('importance5');
+      $user->importance7 = $request->input('importance7');
+      $user->importance9 = $request->input('importance9');
+      $user->importance10 = $request->input('importance10');
+      $user->importance11 = $request->input('importance11');
+      $user->importance12 = $request->input('importance12');
       
      
 
