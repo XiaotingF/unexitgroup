@@ -5,10 +5,8 @@ namespace App\Http\Controllers;
 
 use DB;
 use Illuminate\Http\Request;
+use Auth;
 use Image;
-use App\User;
-use Illuminate\Support\Facades\Auth;
-
 class PostsController extends Controller
 {
    public function index()
@@ -34,51 +32,18 @@ public function answer()
     
 }
 
- public function register()
-{
-return view('posts.register');
-  }
-
-    public function store()
-{
-   $post = new User;
-$post->name = request('name');
-$post->email = request('email');
-$post->password = request('password');
-
-$post->save();
 
 
 
-return redirect()->preference();
-}
-
-    public function preference()
+    public function preference($id)
 {
     return view('posts.preference');
     
 }
-
-public function profile($slug)
-{
-    return view('posts.profile', array('user'=> Auth::user()));
-    
-}
-
-
-
-
-
 public function updatePreferences(Request $request)
 {
-
-
       //$user = User::find($id);
     $user = Auth::user();
-
-
-
-
       $user->q1 = $request->input('q1');
       $user->q2 = $request->input('q2');
       $three  = $request->input('q3');
@@ -105,37 +70,155 @@ public function updatePreferences(Request $request)
       $user->importance12 = $request->input('importance12');
       
      
-
       $user->save();
-
-
-
-
      // $second = $request->input('q2');
      // $user->q2 = $second;
   
-
-
-    return view('posts.profile', array('user'=> Auth::user()));
+    return view('profile.index', array('user'=> Auth::user()));
     
 }
 
 
-public function update_avatar(Request $request){
-if($request->hasFIle('avatar')){
-    $avatar = $request->file('avatar');
-    $filename = time() . '.' . $avatar->getClientOriginalExtension();
-    Image::make($avatar)->resize(300,300)->save( public_path('/uploads/avatars/' . $filename));
+public function matches($id)
+{
+    $user = DB::table('users')->where('id',$id)->first();
+        $targets = DB::table('users')->get();
+        foreach($targets as $single)
+        {
+            if($key=(string)$single->id!=$user->id){
 
-    $user = Auth::user();
-    $user->avatar =$filename;
-    $user->save();
+            $value=0;
+            $key=(string)$single->id;
+            /*Q1*/
+            $dist1=$user->q1-(int)$single->gender;
+            $value=$value+$dist1*$dist1*$user->importance1;
+            /*Q2*/
+            $dist1=$user->q2-$single->q2;
+            $value=$value+$dist1*$dist1*$user->importance2;
+            /*Q3*/
+            $dist1=$user->q3-$single->q3;
+            $value=$value+$dist1*$dist1*$user->importance3;
+            /*Q4*/
+            $dist1=$user->q4-$single->q4;
+            $value=$value+$dist1*$dist1*$user->importance4;
+            /*Q5*/
+            $dist1=$user->q5-$single->q5;
+            $value=$value+$dist1*$dist1*$user->importance5;
+            /*Q6&Q7*/
+            $dist1=$user->q6-$single->q7;
+            $dist2=$user->q7-$single->q6;
+            $value=$value+$dist1*$dist1*$user->importance7+$dist2*$dist2*$user->importance7;
+            /*Q8&Q9*/
+            $dist1=$user->q8-$single->q9;
+            $dist2=$user->q9-$single->q8;
+            $value=$value+$dist1*$dist1*$user->importance9+$dist2*$dist2*$user->importance9;
+            /*Q10*/
+            $dist1=$user->q10-$single->q10;
+            $value=$value+$dist1*$dist1*$user->importance10;
+            /*Q11*/
+            $dist1=$user->q11-$single->q11;
+            $value=$value+$dist1*$dist1*$user->importance11;
+            /*Q12*/
+            $dist1=$user->q12-$single->q12;
+            $value=$value+$dist1*$dist1*$user->importance12;
+            /* more questions */
+            $results[$key] = sqrt($value);
+        }
+        }
+        /* sort by similiarity */
+        asort($results);
+        $max = max($results);
+        if($max==0){
+            $max=1;
+        }
+        /* top 10 */
+        $seed = rand(0,90);
+        $i = 0;
+        foreach($results as $user_id => $user_sim)
+        {
+            $i++;
+            if($i==+1)
+            {
+                $single1 = DB::table('users')->where('id',$user_id)->first();
+                $sim1 = round((100-($user_sim/$max)*100));
+            }
+            if($i==2)
+            {
+                $single2 = DB::table('users')->where('id',$user_id)->first();
+                $sim2 = round((100-($user_sim/$max)*100));
+            }
+            if($i==3)
+            {
+                $single3 = DB::table('users')->where('id',$user_id)->first();
+                $sim3 = round((100-($user_sim/$max)*100));
+            }
+            if($i==4)
+            {
+                $single4 = DB::table('users')->where('id',$user_id)->first();
+                $sim4 = round((100-($user_sim/$max)*100));
+            }
+            if($i==5)
+            {
+                $single5 = DB::table('users')->where('id',$user_id)->first();
+                $sim5 = round((100-($user_sim/$max)*100));
+            }
+            if($i==6)
+            {
+                $single6 = DB::table('users')->where('id',$user_id)->first();
+                $sim6 = round((100-($user_sim/$max)*100));
+            }
+            if($i==7)
+            {
+                $single7 = DB::table('users')->where('id',$user_id)->first();
+                $sim7 = round((100-($user_sim/$max)*100));
+            }
+            if($i==8)
+            {
+                $single8 = DB::table('users')->where('id',$user_id)->first();
+                $sim8 = round((100-($user_sim/$max)*100));
+            }
+            if($i==9)
+            {
+                $single9 = DB::table('users')->where('id',$user_id)->first();
+                $sim9 = round((100-($user_sim/$max)*100));
+            }
+            if($i==10)
+            {
+                $single10 = DB::table('users')->where('id',$user_id)->first();
+                $sim10 = round((100-($user_sim/$max)*100));
+            }
+            if($i==10){
+            break;
+            }
+            
+        }
 
-
+    return view('posts.matches', ['user'=>Auth::user(),
+    'single1'=>$single1,
+    'sim1'=>$sim1,
+    'single2'=>$single2,
+    'sim2'=>$sim2,
+    'single3'=>$single3,
+    'sim3'=>$sim3,
+    'single4'=>$single4,
+    'sim4'=>$sim4,
+    'single5'=>$single5,
+    'sim5'=>$sim5,
+    'single6'=>$single6,
+    'sim6'=>$sim6,
+    'single7'=>$single7,
+    'sim7'=>$sim7,
+    'single8'=>$single8,
+    'sim8'=>$sim8,
+    'single9'=>$single9,
+    'sim9'=>$sim9,
+    'single10'=>$single10,
+    'sim10'=>$sim10,
+    ]);
+    
 }
-return view('posts.profile', array('user'=> Auth::user()));
 
-}
+
 
 public function home1()
 {
