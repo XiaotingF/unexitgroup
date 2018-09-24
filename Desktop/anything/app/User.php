@@ -2,12 +2,14 @@
 
 namespace App;
 
+//use App\Traits\Friendable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
+use App\profile;
 class User extends Authenticatable
 {
     use Notifiable;
+    //use Friendable;
 
     /**
      * The attributes that are mass assignable.
@@ -15,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'slug', 'gender','admin',
     ];
 
     /**
@@ -26,4 +28,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+   // public function getRouteKeyName(){
+     //   return 'name';
+    //}
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }
