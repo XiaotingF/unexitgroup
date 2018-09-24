@@ -6,4 +6,5 @@ Latest Application for WeMatch:
   
   AdminUnexistProject is the latest.
   Please manually add vendor & .env file.
+  May or may not need to make a new database and tables.
   Thanks.
