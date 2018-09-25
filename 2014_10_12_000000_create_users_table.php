@@ -1,9 +1,7 @@
 <?php
-
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-
 class CreateUsersTable extends Migration
 {
     /**
@@ -43,14 +41,20 @@ class CreateUsersTable extends Migration
             $table->integer('importance10')->default(0);
             $table->integer('importance11')->default(0);
             $table->integer('importance12')->default(0);
+            $table->integer('p1')->default(0);
+            $table->integer('p2')->default(0);
+            $table->integer('p3')->default(0);
+            $table->integer('p4')->default(0);
+            $table->integer('p5')->default(0);
+            $table->integer('waiting1')->default(0);
+            $table->integer('waiting2')->default(0);
+            $table->integer('matched1')->default(0);
+            $table->integer('matched2')->default(0);
         
-
-
             $table->rememberToken();
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *
