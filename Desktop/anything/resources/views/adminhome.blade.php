@@ -26,6 +26,8 @@
                           <th>Member Name</th>
                           <th>Email</th>
                           <th>Gender</th>
+                          <th>Role</th>
+                          <th>Status</th>
 
                         </tr>
                       </thead>
@@ -36,6 +38,22 @@
                             <td>{{ $value->name }}</td>
                             <td>{{ $value->email }}</td>
                             <td>{{ $value->gender }}</td>
+                            <td>{{ $value->admin}}</td>
+                            <td>@if($value->status==0)
+                            <b style="color:green"> enable</b>
+                            
+                            @else
+                            <b style="color:red">Disabled</b>
+                            @endif
+                            <br>
+                            <select id="loginStatus">
+                            <option value="0">enable</option>
+                            <option value="1">Diable</option>
+                            </select>
+            
+
+
+
 
                           </tr>
                         @endforeach

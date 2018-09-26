@@ -163,6 +163,11 @@ return [
         
         Intervention\Image\ImageServiceProvider::class,
 
+        //Cog\Ban\Providers\BanServiceProvider::class,
+
+
+
+
 
     ],
 
