@@ -115,7 +115,7 @@ public function request(Request $request)
 
 
 
-
+        //checking if user has reached request limit
      for($v=1;$v<6;$v++)
         {
             $x = "p".$v;
@@ -131,9 +131,34 @@ public function request(Request $request)
             
         }
 
+
         if ($v == 6) {
             echo "<script>
                     alert('Request limit reached');
+                  </script>";
+
+                   return view('profile.index', array('user'=> Auth::user()));
+        }
+
+        //checking if single has space for new request
+        for($s=1;$s<3;$s++)
+        {
+            $columnName = "waiting".$s;
+            //$p_user = DB::table('users')->where('id',$user->id)->first();
+
+            if ($single->$columnName == 0) {
+               
+               break;
+
+            }
+           
+           // echo $p_user->$x;
+            
+        }
+
+         if ($s == 3) {
+            echo "<script>
+                    alert('Your match has too many requests try again later');
                   </script>";
 
                    return view('profile.index', array('user'=> Auth::user()));
@@ -143,6 +168,7 @@ public function request(Request $request)
 
          
          $user->$x = $request->input('p1');
+         $single->$columnName = $user->id;
 
 
 
@@ -157,7 +183,7 @@ public function request(Request $request)
      // $second = $request->input('q2');
      // $user->q2 = $second;
   
-    return view('posts.pending', ['user'=>Auth::user()]);
+    return view('profile.index', array('user'=> Auth::user()));
     
 }
 
@@ -380,7 +406,17 @@ return view('posts.answer_b4login');
 }
 public function waiting($id)
 {
-    return view('posts.waiting');
+
+    $user = Auth::user();
+
+    $waiting1 = User::find($user->waiting1);
+
+    $waiting2 = User::find($user->waiting2);
+     return view('posts.waiting', ['user'=>Auth::user(),
+    'waiting1'=>$waiting1,
+    
+    'waiting2'=>$waiting2,
+    ]);
     
 }
 public function matched($id)

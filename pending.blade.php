@@ -14,9 +14,10 @@
                         </div>
                     @endif
 
+   
 
-
-                    <div class="card-deck">
+                 <div class="card-deck">
+                     <?php if(is_object($single1)) : ?>
                         <div class="col-lg-4">
                       <div class="card text-center" >
                                 <img class="card-img-top" src="/uploads/avatars/{{ $single1->avatar }}" style="width:270px; height:270px; ">
@@ -31,6 +32,8 @@
                                 </div>
                       </div>
                   </div>
+                  <?php endif; ?>
+                  <?php if(is_object($single2)) : ?>
                       <div class="col-lg-4">
                       <div class="card text-center" >
                                 <img class="card-img-top" src="/uploads/avatars/{{ $single2->avatar }}" style="width:270px; height:270px; ">
@@ -45,6 +48,8 @@
                                 </div>
                       </div>
                   </div>
+                  <?php endif; ?>
+                  <?php if(is_object($single3)) : ?>
                       <div class="col-lg-4">
                       <div class="card text-center" >
                                 <img class="card-img-top" src="/uploads/avatars/{{ $single3->avatar }}" style="width:270px; height:270px; ">
@@ -59,7 +64,8 @@
                                 </div>
                       </div>
                   </div>
-
+                  <?php endif; ?>
+                    <?php if(is_object($single4)) : ?>
                      <div class="col-lg-4">
                       <div class="card text-center" >
                                 <img class="card-img-top" src="/uploads/avatars/{{ $single4->avatar }}" style="width:270px; height:270px; ">
@@ -74,7 +80,8 @@
                                 </div>
                       </div>
                   </div>
-
+                    <?php endif; ?>
+                     <?php if(is_object($single5)) : ?>
                   <div class="col-lg-4">
                       <div class="card text-center" >
                                 <img class="card-img-top" src="/uploads/avatars/{{ $single5->avatar }}" style="width:270px; height:270px; ">
@@ -89,6 +96,7 @@
                                 </div>
                       </div>
                   </div>
+                  <?php endif; ?>
                     </div>
 
 

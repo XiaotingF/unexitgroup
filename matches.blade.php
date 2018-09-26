@@ -15,7 +15,7 @@
                     @endif
 
                   
-
+<div class="row">
 
 <div class="col-lg-3">
      <div id = "mini_profile" >
@@ -28,7 +28,9 @@
 </div>
 
 
-<div class="col-lg-7">
+<div class="col-lg-6">
+
+
      <div class = "card" >
         <form action="/request" method="post">
              <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -167,7 +169,7 @@
 
 </div>
 
-
+</div>
 
 
 
