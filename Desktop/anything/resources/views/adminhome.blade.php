@@ -47,6 +47,7 @@
                             @endif
                             <br>
                             <select id="loginStatus">
+                            <option value="">select a option</option>
                             <option value="0">enable</option>
                             <option value="1">Diable</option>
                             </select>

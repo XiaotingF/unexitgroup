@@ -41,7 +41,15 @@ class CreateUsersTable extends Migration
             $table->integer('importance10')->default(0);
             $table->integer('importance11')->default(0);
             $table->integer('importance12')->default(0);
-        
+            $table->integer('p1')->default(0);
+            $table->integer('p2')->default(0);
+            $table->integer('p3')->default(0);
+            $table->integer('p4')->default(0);
+            $table->integer('p5')->default(0);
+            $table->integer('waiting1')->default(0);
+            $table->integer('waiting2')->default(0);
+            $table->integer('matched1')->default(0);
+            $table->integer('matched2')->default(0);
             $table->rememberToken();
             $table->timestamps();
             $table->boolean('admin')->default(0);

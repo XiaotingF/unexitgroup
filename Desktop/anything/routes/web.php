@@ -17,7 +17,9 @@ Route::get('/about_b4login','PostsController@aboutb4');
 Route::get('/contact_b4login','PostsController@contactb4');
 Route::get('/answer_b4login','PostsController@answerb4');
 Route::get('matches/{id}','PostsController@matches');
-
+Route::get('/pending/{id}','PostsController@pending');
+Route::get('/waiting/{id}','PostsController@waiting');
+Route::get('/matched/{id}','PostsController@matched');
 Route::get('/preference/{id}', 'PostsController@preference')->name('preference');
 
 
@@ -33,6 +35,7 @@ Route::get('profile/{id}', 'ProfileController@index');
 Route::post('/profile/{id}', 'ProfileController@update_avatar');
 Route::post('/updatePreferences', 'PostsController@updatePreferences');
 Route::get('/edit', 'ProfileController@edit');
+Route::post('/request', 'PostsController@request');
 
 
 Route::get('/home', function() {

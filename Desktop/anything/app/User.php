@@ -39,4 +39,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\User');
     }
+    
+    public function findForPassport($identifier){
+        return User::orWhere('email', $identifier)->where('status',0)->first();
+    
+    }
 }
