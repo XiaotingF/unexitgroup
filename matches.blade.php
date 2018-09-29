@@ -25,10 +25,9 @@
 
 
 </div>
+
 <div class="row">
-
 <div class="col-lg-6">
-
 
      <div class = "card" >
         <form action="/request" method="post">
@@ -42,8 +41,8 @@
              <button class="btn btn-primary" type = "submit" >Request</button>
              </div>
              </form>
-        </div>
-        </div>
+             </div>
+         </div>
 
 <div class="col-lg-6">
      <div class = "card" >
@@ -56,26 +55,10 @@
                 {{'Similarity:'.$sim2.'%'}}<br>
              <img src="/uploads/avatars/{{ $single2->avatar }}" style="width:150px; height:150px; float:left; border-radius:50%; margin-right:25px;">
              <button class="btn btn-primary" type = "submit" >Request</button>
-         </div>
-             </form>
-                 </div>
              </div>
-
-<div class="col-lg-6">
-     <div class = "card" >
-        <form action="/request" method="post">
-             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-             <input type="hidden" name="p1" value="<?php echo htmlspecialchars($single3->id); ?>">
-
-         <div class = "card-header" >{{$single3->name}}</div>
-             <div class = "card-body text-center">
-                {{'Similarity:'.$sim3.'%'}}<br>
-             <img src="/uploads/avatars/{{ $single3->avatar }}" style="width:150px; height:150px; float:left; border-radius:50%; margin-right:25px;">
-             <button class="btn btn-primary" type = "submit" >Request</button>
-         </div>
              </form>
-                 </div>
              </div>
+         </div>
 
 <div class="col-lg-6">
     <div class = "card" >
@@ -88,10 +71,10 @@
                 {{'Similarity:'.$sim4.'%'}}<br>
              <img src="/uploads/avatars/{{ $single4->avatar }}" style="width:150px; height:150px; float:left; border-radius:50%; margin-right:25px;">
              <button class="btn btn-primary" type = "submit" >Request</button>
-         </div>
-             </form>
-                 </div>
              </div>
+             </form>
+             </div>
+         </div>
 
 <div class="col-lg-6">
                  <div class = "card" >
@@ -104,10 +87,10 @@
                 {{'Similarity:'.$sim5.'%'}}<br>
              <img src="/uploads/avatars/{{ $single5->avatar }}" style="width:150px; height:150px; float:left; border-radius:50%; margin-right:25px;">
              <button class="btn btn-primary" type = "submit" >Request</button>
-         </div>
+            </div>
              </form>
-                 </div>
              </div>
+         </div>
 
 <div class="col-lg-6">
                  <div class = "card" >
@@ -120,10 +103,10 @@
                 {{'Similarity:'.$sim6.'%'}}<br>
              <img src="/uploads/avatars/{{ $single6->avatar }}" style="width:150px; height:150px; float:left; border-radius:50%; margin-right:25px;">
              <button class="btn btn-primary" type = "submit" >Request</button>
-         </div>
-             </form>
-                 </div>
              </div>
+             </form>
+             </div>
+         </div>
 
 <div class="col-lg-6">
                  <div class = "card" >
@@ -136,10 +119,10 @@
                 {{'Similarity:'.$sim7.'%'}}<br>
              <img src="/uploads/avatars/{{ $single7->avatar }}" style="width:150px; height:150px; float:left; border-radius:50%; margin-right:25px;">
              <button class="btn btn-primary" type = "submit" >Request</button>
-         </div>
-             </form>
-                 </div>
              </div>
+             </form>
+             </div>
+         </div>
 
 <div class="col-lg-6">
                  <div class = "card" >
@@ -152,10 +135,10 @@
                 {{'Similarity:'.$sim8.'%'}}<br>
              <img src="/uploads/avatars/{{ $single8->avatar }}" style="width:150px; height:150px; float:left; border-radius:50%; margin-right:25px;">
              <button class="btn btn-primary" type = "submit" >Request</button>
-         </div>
-             </form>
-                 </div>
              </div>
+             </form>
+             </div>
+         </div>
 
 <div class="col-lg-6">
                  <div class = "card" >
@@ -168,10 +151,10 @@
                 {{'Similarity:'.$sim9.'%'}}<br>
              <img src="/uploads/avatars/{{ $single9->avatar }}" style="width:150px; height:150px; float:left; border-radius:50%; margin-right:25px;">
              <button class="btn btn-primary" type = "submit" >Request</button>
-         </div>
-             </form>
-                 </div>
              </div>
+             </form>
+             </div>
+         </div>
 
 <div class="col-lg-6">
                  <div class = "card" >
@@ -184,10 +167,10 @@
                 {{'Similarity:'.$sim10.'%'}}<br>
              <img src="/uploads/avatars/{{ $single10->avatar }}" style="width:150px; height:150px; float:left; border-radius:50%; margin-right:25px;">
              <button class="btn btn-primary" type = "submit" >Request</button>
-         </div>
-             </form>
-                 </div>
              </div>
+             </form>
+             </div>
+         </div>
 
 </div>
 
@@ -204,4 +187,6 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
 @endsection
