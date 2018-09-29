@@ -81,6 +81,109 @@ public function updatePreferences(Request $request)
     return view('profile.index', array('user'=> Auth::user()));
 }
 
+public function accept(Request $request)
+{
+      //$user = User::find($id);
+    $user = Auth::user();
+    $single = User::find($request->input('w1'));
+
+  
+
+
+        $i =1;
+        for($i=1;$i<6;$i++)
+        {
+            $test = "m".$i;
+            //$p_user = DB::table('users')->where('id',$user->id)->first();
+            
+           if ($user->$test == 0) {
+               
+               break;
+            }
+            
+        }
+    
+
+        if ($i == 6) {
+            echo "<script>
+                    alert('You have too many matches');
+                  </script>";
+
+                   return view('profile.index', array('user'=> Auth::user()));
+        }
+        //checking if single has space for new request
+        $s = 1;
+
+        for($s=1;$s<6;$s++)
+        {
+            $columnName = "m".$s;
+            //$p_user = DB::table('users')->where('id',$user->id)->first();
+            if ($single->$columnName == 0) {
+               
+               break;
+            }
+           
+           // echo $p_user->$x;
+            
+        }
+
+        if ($s == 6) {
+            echo "<script>
+                    alert('Your partner has too many matches');
+                  </script>";
+
+                   return view('profile.index', array('user'=> Auth::user()));
+        }
+
+
+        for($i=1;$i<6;$i++)
+        {
+            $test2 = "w".$i;
+            //$p_user = DB::table('users')->where('id',$user->id)->first();
+
+            if ($user->$test2 == $single->id) {
+
+              $user->$test2 = 0;
+                
+
+                 
+
+            }
+          
+            
+        }
+
+        for($i=1;$i<6;$i++)
+        {
+            $test3 = "p".$i;
+            //$p_user = DB::table('users')->where('id',$user->id)->first();
+
+            if ($single->$test3 == $user->id) {
+
+              $single->$test3 = 0;
+                
+
+
+            }
+            
+            
+        }
+
+
+         
+         $user->$test = $single->id;
+         $single->$columnName = $user->id;
+      
+     
+      $single->save();
+      $user->save();
+     // $second = $request->input('q2');
+     // $user->q2 = $second;
+  
+    return view('profile.index', array('user'=> Auth::user()));
+    
+}
+
 
 public function request(Request $request)
 {
@@ -141,9 +244,9 @@ public function request(Request $request)
         }
 
         //checking if single has space for new request
-        for($s=1;$s<3;$s++)
+        for($s=1;$s<6;$s++)
         {
-            $columnName = "waiting".$s;
+            $columnName = "w".$s;
             //$p_user = DB::table('users')->where('id',$user->id)->first();
 
             if ($single->$columnName == 0) {
@@ -156,7 +259,7 @@ public function request(Request $request)
             
         }
 
-         if ($s == 3) {
+         if ($s == 6) {
             echo "<script>
                     alert('Your match has too many requests try again later');
                   </script>";
@@ -409,19 +512,37 @@ public function waiting($id)
 
     $user = Auth::user();
 
-    $waiting1 = User::find($user->waiting1);
+    $w1 = User::find($user->w1);
 
-    $waiting2 = User::find($user->waiting2);
+    $w2 = User::find($user->w2);
      return view('posts.waiting', ['user'=>Auth::user(),
-    'waiting1'=>$waiting1,
+    'w1'=>$w1,
     
-    'waiting2'=>$waiting2,
+    'w2'=>$w2,
     ]);
     
 }
-public function matched($id)
+ public function matched($id)
 {
-    return view('posts.matched');
+    $user = Auth::user();
+    $single1 = User::find($user->m1);
+    $single2 = User::find($user->m2);
+    $single3 = User::find($user->m3);
+    $single4 = User::find($user->m4);
+    $single5 = User::find($user->m5);;
+     return view('posts.matched', ['user'=>Auth::user(),
+    'single1'=>$single1,
+    'single2'=>$single2,
+    'single3'=>$single3,
+    'single4'=>$single4,
+    'single5'=>$single5,
+    ]);
     
 }
+    public function showsingle($id)
+    {
+    $user = DB::table('users')->where('id',$id)->first();
+    return view('posts.profile',['user'=>$user]);
+    
+    }
 }

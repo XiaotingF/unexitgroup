@@ -41,8 +41,17 @@ Route::post('/updatePreferences', 'PostsController@updatePreferences');
 
 Route::post('/request', 'PostsController@request');
 
+Route::post('/accept', 'PostsController@accept');
+
+Route::post('/reject', 'PostsController@reject');
+
+
+
+
 
 Route::get('/edit', 'ProfileController@edit');
+
+Route::post('/showsingle/{id}','PostsController@showsingle');
 
 });
 
