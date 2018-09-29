@@ -24,11 +24,15 @@
                                   <p class="card-text">Name: {{$waiting1->name}}<br>
                                     Gender: {{$waiting1->gender}}
                                   </p>
-                                <form action="" method="post">
+                                <form action="/accept" method="post">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <input type="hidden" name="p1" value="<?php echo htmlspecialchars($single1->id); ?>">
                                 <button class="btn btn-primary" type = "submit" >Accept</button>
                                 </form>
                                 <br>
-                                <form action="" method="post">
+                                <form action="/reject" method="post">
+                                  <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <input type="hidden" name="p1" value="<?php echo htmlspecialchars($single1->id); ?>">
                                 <button class="btn btn-primary" type = "submit" >Reject</button>
                                 </form>
                                 <br>
@@ -52,7 +56,7 @@
                                     Gender: {{$waiting2->gender}}
                                   </p>
                                 </div>
-                                <button class="btn btn-primary" type = "submit" >Accept</button>
+
                                 <div class="card-footer">
                                   <small class="text-muted"></small>
                                 </div>
