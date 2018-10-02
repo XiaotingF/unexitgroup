@@ -1,5 +1,8 @@
 <?php
+
 namespace App\Http\Controllers;
+
+
 use DB;
 use App\Pending;
 use Illuminate\Http\Request;
@@ -13,12 +16,15 @@ class PostsController extends Controller
    public function index()
 {
     return view('posts.index');
+
 }
+
 public function about()
 {
     return view('posts.about');
     
 }
+
 public function contact()
 {
     return view('posts.contact');
@@ -29,6 +35,10 @@ public function answer()
     return view('posts.answer');
     
 }
+
+
+
+
     public function preference($id)
 {
     return view('posts.preference');
@@ -69,52 +79,44 @@ public function updatePreferences(Request $request)
      // $user->q2 = $second;
   
     return view('profile.index', array('user'=> Auth::user()));
-    
 }
 
-public function request(Request $request)
+public function accept(Request $request)
 {
       //$user = User::find($id);
     $user = Auth::user();
-    $single = User::find($request->input('p1'));
+    $single = User::find($request->input('w1'));
+
+  
+
+
         $i =1;
         for($i=1;$i<6;$i++)
         {
-            $test = "p".$i;
+            $test = "m".$i;
             //$p_user = DB::table('users')->where('id',$user->id)->first();
-            if ($user->$test == $single->id) {
-               echo "<script>
-                    alert('Request already sent');
-                  </script>";
-                   return view('profile.index', array('user'=> Auth::user()));
-            }
             
-           // echo $p_user->$x;
-            
-        }
-        //checking if user has reached request limit
-     for($v=1;$v<6;$v++)
-        {
-            $x = "p".$v;
-            //$p_user = DB::table('users')->where('id',$user->id)->first();
-            if ($user->$x == 0) {
+           if ($user->$test == 0) {
                
                break;
             }
-           
-           // echo $p_user->$x;
             
         }
-        if ($v == 6) {
+    
+
+        if ($i == 6) {
             echo "<script>
-                    alert('Request limit reached');
+                    alert('You have too many matches');
                   </script>";
+
                    return view('profile.index', array('user'=> Auth::user()));
         }
         //checking if single has space for new request
-        for($s=1;$s<3;$s++)
+        $s = 1;
+
+        for($s=1;$s<6;$s++)
         {
-            $columnName = "waiting".$s;
+            $columnName = "m".$s;
             //$p_user = DB::table('users')->where('id',$user->id)->first();
             if ($single->$columnName == 0) {
                
@@ -124,14 +126,52 @@ public function request(Request $request)
            // echo $p_user->$x;
             
         }
-         if ($s == 3) {
+
+        if ($s == 6) {
             echo "<script>
-                    alert('Your match has too many requests try again later');
+                    alert('Your partner has too many matches');
                   </script>";
+
                    return view('profile.index', array('user'=> Auth::user()));
         }
+
+
+        for($i=1;$i<6;$i++)
+        {
+            $test2 = "w".$i;
+            //$p_user = DB::table('users')->where('id',$user->id)->first();
+
+            if ($user->$test2 == $single->id) {
+
+              $user->$test2 = 0;
+                
+
+                 
+
+            }
+          
+            
+        }
+
+        for($i=1;$i<6;$i++)
+        {
+            $test3 = "p".$i;
+            //$p_user = DB::table('users')->where('id',$user->id)->first();
+
+            if ($single->$test3 == $user->id) {
+
+              $single->$test3 = 0;
+                
+
+
+            }
+            
+            
+        }
+
+
          
-         $user->$x = $request->input('p1');
+         $user->$test = $single->id;
          $single->$columnName = $user->id;
       
      
@@ -144,51 +184,52 @@ public function request(Request $request)
     
 }
 
-public function accept( $accept)
+
+public function reject(Request $request)
 {
       //$user = User::find($id);
     $user = Auth::user();
-    $single = User::find($accept->input('p1'));
-        $i =1;
+    $single = User::find($request->input('w1'));
+
+
+
+    for($i=1;$i<6;$i++)
+        {
+            $test2 = "w".$i;
+            //$p_user = DB::table('users')->where('id',$user->id)->first();
+
+            if ($user->$test2 == $single->id) {
+
+              $user->$test2 = 0;
+                
+
+                 
+
+            }
+          
+            
+        }
+
         for($i=1;$i<6;$i++)
         {
-            $test = "p".$i;
+            $test3 = "p".$i;
             //$p_user = DB::table('users')->where('id',$user->id)->first();
 
-            
-           // echo $p_user->$x;
-            
-        }
-        //checking if user has reached request limit
-     for($v=1;$v<6;$v++)
-        {
-            $x = "p".$v;
-            //$p_user = DB::table('users')->where('id',$user->id)->first();
-            if ($user->$x == 0) {
-               
-               break;
+            if ($single->$test3 == $user->id) {
+
+              $single->$test3 = 0;
+                
+
+
             }
-           
-           // echo $p_user->$x;
+            
             
         }
 
-        //checking if single has space for new request
-        for($s=1;$s<3;$s++)
-        {
-            $columnName = "waiting".$s;
-            //$p_user = DB::table('users')->where('id',$user->id)->first();
-            if ($single->$columnName == 0) {
-               
-               break;
-            }
-           
-           // echo $p_user->$x;
-            
-        }
-         
-         $user->$x = $request->input('p1');
-         $single->$columnName = $user->id;
+  
+
+
+
       
      
       $single->save();
@@ -196,9 +237,120 @@ public function accept( $accept)
      // $second = $request->input('q2');
      // $user->q2 = $second;
   
-    return view('waiting.index', array('user'=> Auth::user()));
+    return view('profile.index', array('user'=> Auth::user()));
     
 }
+
+
+
+public function request(Request $request)
+{
+
+      //$user = User::find($id);
+
+    $user = Auth::user();
+
+    $single = User::find($request->input('p1'));
+
+
+        $i =1;
+
+
+        for($i=1;$i<6;$i++)
+        {
+            $test = "p".$i;
+            //$p_user = DB::table('users')->where('id',$user->id)->first();
+
+            if ($user->$test == $single->id) {
+               echo "<script>
+                    alert('Request already sent');
+                  </script>";
+
+                   return view('profile.index', array('user'=> Auth::user()));
+
+            }
+            
+           // echo $p_user->$x;
+            
+        }
+
+
+
+        //checking if user has reached request limit
+     for($v=1;$v<6;$v++)
+        {
+            $x = "p".$v;
+            //$p_user = DB::table('users')->where('id',$user->id)->first();
+
+            if ($user->$x == 0) {
+               
+               break;
+
+            }
+           
+           // echo $p_user->$x;
+            
+        }
+
+
+        if ($v == 6) {
+            echo "<script>
+                    alert('Request limit reached');
+                  </script>";
+
+                   return view('profile.index', array('user'=> Auth::user()));
+        }
+
+        //checking if single has space for new request
+        for($s=1;$s<6;$s++)
+        {
+            $columnName = "w".$s;
+            //$p_user = DB::table('users')->where('id',$user->id)->first();
+
+            if ($single->$columnName == 0) {
+               
+               break;
+
+            }
+           
+           // echo $p_user->$x;
+            
+        }
+
+         if ($s == 6) {
+            echo "<script>
+                    alert('Your match has too many requests try again later');
+                  </script>";
+
+                   return view('profile.index', array('user'=> Auth::user()));
+        }
+
+
+
+         
+         $user->$x = $request->input('p1');
+         $single->$columnName = $user->id;
+
+
+
+
+
+
+      
+     
+      $single->save();
+      $user->save();
+
+     // $second = $request->input('q2');
+     // $user->q2 = $second;
+  
+    return view('profile.index', array('user'=> Auth::user()));
+    
+}
+
+    
+
+
 
 public function matches($id)
 {
@@ -207,6 +359,7 @@ public function matches($id)
         foreach($targets as $single)
         {
             if($key=(string)$single->id!=$user->id){
+
             $value=0;
             $key=(string)$single->id;
             /*Q1*/
@@ -256,8 +409,29 @@ public function matches($id)
         $i = 0;
         foreach($results as $user_id => $user_sim)
         {
+            if($user_id == $user->m1)
+            {
+              continue;
+            }
+            if($user_id == $user->m2)
+            {
+              continue;
+            }
+            if($user_id == $user->m3)
+            {
+              continue;
+            }
+            if($user_id == $user->m4)
+            {
+              continue;
+            }
+            if($user_id == $user->m5)
+            {
+              continue;
+            }
             $i++;
-            if($i==+1)
+
+            if($i==1)
             {
                 $single1 = DB::table('users')->where('id',$user_id)->first();
                 $sim1 = round((100-($user_sim/$max)*100));
@@ -312,6 +486,7 @@ public function matches($id)
             }
             
         }
+
     return view('posts.matches', ['user'=>Auth::user(),
     'single1'=>$single1,
     'sim1'=>$sim1,
@@ -336,71 +511,119 @@ public function matches($id)
     ]);
     
 }
+
+
+
 public function home1()
 {
     return view('posts.home1');
     
 }
+
 public function login()
   {
 return view('posts.login');
 return redirect()->preference();
   }
+
     public function logout()
     {
 auth()->logout();
 return redirect()->home();
+
     }
+
+
+
     public function aboutb4()
     {
 return view('posts.about_b4login');
+
     }
     public function contactb4()
     {
 return view('posts.contact_b4login');
+
     }
     public function answerb4()
     {
 return view('posts.answer_b4login');
+
     }
 
 
     public function pending($id)
 {
     $user = Auth::user();
+
     $single1 = User::find($user->p1);
+
     $single2 = User::find($user->p2);
+
     $single3 = User::find($user->p3);
+
     $single4 = User::find($user->p4);
+
     $single5 = User::find($user->p5);
+
     //return view('posts.pending');
      return view('posts.pending', ['user'=>Auth::user(),
     'single1'=>$single1,
     
     'single2'=>$single2,
+
     'single3'=>$single3,
  
     'single4'=>$single4,
+
     'single5'=>$single5,
     ]);
     
 }
 public function waiting($id)
 {
+
     $user = Auth::user();
-    $waiting1 = User::find($user->waiting1);
-    $waiting2 = User::find($user->waiting2);
+
+    $w1 = User::find($user->w1);
+
+    $w2 = User::find($user->w2);
+    $w3 = User::find($user->w3);
+
+    $w4 = User::find($user->w4);
+     $w5 = User::find($user->w5);
      return view('posts.waiting', ['user'=>Auth::user(),
-    'waiting1'=>$waiting1,
+    'w1'=>$w1,
     
-    'waiting2'=>$waiting2,
+    'w2'=>$w2,
+     'w3'=>$w3,
+    
+    'w4'=>$w4,
+     'w5'=>$w5,
     ]);
     
 }
-public function matched($id)
+ public function matched($id)
 {
-    return view('posts.matched');
+    $user = Auth::user();
+    $single1 = User::find($user->m1);
+    $single2 = User::find($user->m2);
+    $single3 = User::find($user->m3);
+    $single4 = User::find($user->m4);
+    $single5 = User::find($user->m5);;
+     return view('posts.matched', ['user'=>Auth::user(),
+    'single1'=>$single1,
+    'single2'=>$single2,
+    'single3'=>$single3,
+    'single4'=>$single4,
+    'single5'=>$single5,
+    ]);
     
 }
-
+    public function showsingle($id)
+    {
+    $user = DB::table('users')->where('id',$id)->first();
+    return view('posts.profile',['user'=>$user]);
+    
+    }
 }
