@@ -1,8 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
-
 use DB;
 use App\Pending;
 use Illuminate\Http\Request;
@@ -16,15 +13,12 @@ class PostsController extends Controller
    public function index()
 {
     return view('posts.index');
-
 }
-
 public function about()
 {
     return view('posts.about');
     
 }
-
 public function contact()
 {
     return view('posts.contact');
@@ -35,10 +29,6 @@ public function answer()
     return view('posts.answer');
     
 }
-
-
-
-
     public function preference($id)
 {
     return view('posts.preference');
@@ -80,16 +70,12 @@ public function updatePreferences(Request $request)
   
     return view('profile.index', array('user'=> Auth::user()));
 }
-
 public function accept(Request $request)
 {
       //$user = User::find($id);
     $user = Auth::user();
     $single = User::find($request->input('w1'));
-
   
-
-
         $i =1;
         for($i=1;$i<6;$i++)
         {
@@ -103,17 +89,14 @@ public function accept(Request $request)
             
         }
     
-
         if ($i == 6) {
             echo "<script>
                     alert('You have too many matches');
                   </script>";
-
                    return view('profile.index', array('user'=> Auth::user()));
         }
         //checking if single has space for new request
         $s = 1;
-
         for($s=1;$s<6;$s++)
         {
             $columnName = "m".$s;
@@ -126,50 +109,35 @@ public function accept(Request $request)
            // echo $p_user->$x;
             
         }
-
         if ($s == 6) {
             echo "<script>
                     alert('Your partner has too many matches');
                   </script>";
-
                    return view('profile.index', array('user'=> Auth::user()));
         }
-
-
         for($i=1;$i<6;$i++)
         {
             $test2 = "w".$i;
             //$p_user = DB::table('users')->where('id',$user->id)->first();
-
             if ($user->$test2 == $single->id) {
-
               $user->$test2 = 0;
                 
-
                  
-
             }
           
             
         }
-
         for($i=1;$i<6;$i++)
         {
             $test3 = "p".$i;
             //$p_user = DB::table('users')->where('id',$user->id)->first();
-
             if ($single->$test3 == $user->id) {
-
               $single->$test3 = 0;
                 
-
-
             }
             
             
         }
-
-
          
          $user->$test = $single->id;
          $single->$columnName = $user->id;
@@ -183,53 +151,35 @@ public function accept(Request $request)
     return view('profile.index', array('user'=> Auth::user()));
     
 }
-
-
 public function reject(Request $request)
 {
       //$user = User::find($id);
     $user = Auth::user();
     $single = User::find($request->input('w1'));
-
-
-
     for($i=1;$i<6;$i++)
         {
             $test2 = "w".$i;
             //$p_user = DB::table('users')->where('id',$user->id)->first();
-
             if ($user->$test2 == $single->id) {
-
               $user->$test2 = 0;
                 
-
                  
-
             }
           
             
         }
-
         for($i=1;$i<6;$i++)
         {
             $test3 = "p".$i;
             //$p_user = DB::table('users')->where('id',$user->id)->first();
-
             if ($single->$test3 == $user->id) {
-
               $single->$test3 = 0;
                 
-
-
             }
             
             
         }
-
   
-
-
-
       
      
       $single->save();
@@ -240,118 +190,78 @@ public function reject(Request $request)
     return view('profile.index', array('user'=> Auth::user()));
     
 }
-
-
-
 public function request(Request $request)
 {
-
       //$user = User::find($id);
-
     $user = Auth::user();
-
     $single = User::find($request->input('p1'));
-
-
         $i =1;
-
-
         for($i=1;$i<6;$i++)
         {
             $test = "p".$i;
             //$p_user = DB::table('users')->where('id',$user->id)->first();
-
             if ($user->$test == $single->id) {
                echo "<script>
                     alert('Request already sent');
                   </script>";
-
                    return view('profile.index', array('user'=> Auth::user()));
-
             }
             
            // echo $p_user->$x;
             
         }
-
-
-
         //checking if user has reached request limit
      for($v=1;$v<6;$v++)
         {
             $x = "p".$v;
             //$p_user = DB::table('users')->where('id',$user->id)->first();
-
             if ($user->$x == 0) {
                
                break;
-
             }
            
            // echo $p_user->$x;
             
         }
-
-
         if ($v == 6) {
             echo "<script>
                     alert('Request limit reached');
                   </script>";
-
                    return view('profile.index', array('user'=> Auth::user()));
         }
-
         //checking if single has space for new request
         for($s=1;$s<6;$s++)
         {
             $columnName = "w".$s;
             //$p_user = DB::table('users')->where('id',$user->id)->first();
-
             if ($single->$columnName == 0) {
                
                break;
-
             }
            
            // echo $p_user->$x;
             
         }
-
          if ($s == 6) {
             echo "<script>
                     alert('Your match has too many requests try again later');
                   </script>";
-
                    return view('profile.index', array('user'=> Auth::user()));
         }
-
-
-
          
          $user->$x = $request->input('p1');
          $single->$columnName = $user->id;
-
-
-
-
-
-
       
      
       $single->save();
       $user->save();
-
      // $second = $request->input('q2');
      // $user->q2 = $second;
   
     return view('profile.index', array('user'=> Auth::user()));
     
 }
-
     
-
-
-
 public function matches($id)
 {
     $user = DB::table('users')->where('id',$id)->first();
@@ -359,7 +269,6 @@ public function matches($id)
         foreach($targets as $single)
         {
             if($key=(string)$single->id!=$user->id){
-
             $value=0;
             $key=(string)$single->id;
             /*Q1*/
@@ -409,8 +318,28 @@ public function matches($id)
         $i = 0;
         foreach($results as $user_id => $user_sim)
         {
+            if($user_id == $user->m1)
+            {
+              continue;
+            }
+            if($user_id == $user->m2)
+            {
+              continue;
+            }
+            if($user_id == $user->m3)
+            {
+              continue;
+            }
+            if($user_id == $user->m4)
+            {
+              continue;
+            }
+            if($user_id == $user->m5)
+            {
+              continue;
+            }
             $i++;
-            if($i==+1)
+            if($i==1)
             {
                 $single1 = DB::table('users')->where('id',$user_id)->first();
                 $sim1 = round((100-($user_sim/$max)*100));
@@ -465,7 +394,6 @@ public function matches($id)
             }
             
         }
-
     return view('posts.matches', ['user'=>Auth::user(),
     'single1'=>$single1,
     'sim1'=>$sim1,
@@ -490,85 +418,59 @@ public function matches($id)
     ]);
     
 }
-
-
-
 public function home1()
 {
     return view('posts.home1');
     
 }
-
 public function login()
   {
 return view('posts.login');
 return redirect()->preference();
   }
-
     public function logout()
     {
 auth()->logout();
 return redirect()->home();
-
     }
-
-
-
     public function aboutb4()
     {
 return view('posts.about_b4login');
-
     }
     public function contactb4()
     {
 return view('posts.contact_b4login');
-
     }
     public function answerb4()
     {
 return view('posts.answer_b4login');
-
     }
-
-
     public function pending($id)
 {
     $user = Auth::user();
-
     $single1 = User::find($user->p1);
-
     $single2 = User::find($user->p2);
-
     $single3 = User::find($user->p3);
-
     $single4 = User::find($user->p4);
-
     $single5 = User::find($user->p5);
-
     //return view('posts.pending');
      return view('posts.pending', ['user'=>Auth::user(),
     'single1'=>$single1,
     
     'single2'=>$single2,
-
     'single3'=>$single3,
  
     'single4'=>$single4,
-
     'single5'=>$single5,
     ]);
     
 }
 public function waiting($id)
 {
-
     $user = Auth::user();
-
     $w1 = User::find($user->w1);
-
     $w2 = User::find($user->w2);
     $w3 = User::find($user->w3);
-
     $w4 = User::find($user->w4);
      $w5 = User::find($user->w5);
      return view('posts.waiting', ['user'=>Auth::user(),
