@@ -1,3 +1,4 @@
+
 @extends('profile.master')
 
 @section('content')
@@ -13,7 +14,95 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                </div>
+
+   
+
+                 <div class="card-deck">
+                     <?php if(is_object($single1)) : ?>
+                        <div class="col-lg-4">
+                      <div class="card text-center" >
+                                <img class="card-img-top" src="/uploads/avatars/{{ $single1->avatar }}" style="width:270px; height:270px; ">
+                                <div class="card-body">
+                                  <h5 class="card-title">{{$single1->name}}</h5>
+                                  <p class="card-text">Name: {{$single1->name}}<br>
+                                    Gender: {{$single1->gender}}<br>
+                                    Email: {{$single1->email}}
+                                    <!--Profile:  <a href="/showsingle/"+$single1->id>View Profile</a>-->
+
+                                  </p>
+                                </div>
+                               
+                      </div>
+                  </div>
+                  <?php endif; ?>
+                  <?php if(is_object($single2)) : ?>
+                      <div class="col-lg-4">
+                      <div class="card text-center" >
+                                <img class="card-img-top" src="/uploads/avatars/{{ $single2->avatar }}" style="width:270px; height:270px; ">
+                                <div class="card-body">
+                                  <h5 class="card-title">{{$single2->name}}</h5>
+                                  <p class="card-text">Name: {{$single2->name}}<br>
+                                    Gender: {{$single2->gender}}<br>
+                                    Email: {{$single2->email}}
+                                  </p>
+                                </div>
+                                
+                      </div>
+                  </div>
+                  <?php endif; ?>
+                  <?php if(is_object($single3)) : ?>
+                      <div class="col-lg-4">
+                      <div class="card text-center" >
+                                <img class="card-img-top" src="/uploads/avatars/{{ $single3->avatar }}" style="width:270px; height:270px; ">
+                                <div class="card-body">
+                                  <h5 class="card-title">{{$single3->name}}</h5>
+                                  <p class="card-text">Name: {{$single3->name}}<br>
+                                    Gender: {{$single3->gender}}<br>
+                                    Email: {{$single3->email}}
+
+                                  </p>
+                                </div>
+                                
+                      </div>
+                  </div>
+                  <?php endif; ?>
+                    <?php if(is_object($single4)) : ?>
+                     <div class="col-lg-4">
+                      <div class="card text-center" >
+                                <img class="card-img-top" src="/uploads/avatars/{{ $single4->avatar }}" style="width:270px; height:270px; ">
+                                <div class="card-body">
+                                  <h5 class="card-title">{{$single4->name}}</h5>
+                                  <p class="card-text">Name: {{$single4->name}}<br>
+                                    Gender: {{$single4->gender}}<br>
+                                    Email: {{$single4->email}}
+
+                                  </p>
+                                </div>
+                               
+                      </div>
+                  </div>
+                    <?php endif; ?>
+                     <?php if(is_object($single5)) : ?>
+                  <div class="col-lg-4">
+                      <div class="card text-center" >
+                                <img class="card-img-top" src="/uploads/avatars/{{ $single5->avatar }}" style="width:270px; height:270px; ">
+                                <div class="card-body">
+                                  <h5 class="card-title">{{$single5->name}}</h5>
+                                  <p class="card-text">Name: {{$single5->name}}<br>
+                                    Gender: {{$single5->gender}}<br>
+                                    Email: {{$single5->email}}
+
+                                  </p>
+                                </div>
+                               
+                      </div>
+                  </div>
+                  <?php endif; ?>
+                    </div>
+
+
+
+                                    </div>
 <br>
 
 </div>
