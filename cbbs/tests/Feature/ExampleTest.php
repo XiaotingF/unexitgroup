@@ -4,10 +4,7 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-//use Laravel\BrowserKitTesting\TestCase as BaseTestCase;
-use laravel\dusk;
-use laravel\BrowserKitTesting;
-//use Tests\DuskTestCase;
+
 
 class ExampleTest extends TestCase
 {
