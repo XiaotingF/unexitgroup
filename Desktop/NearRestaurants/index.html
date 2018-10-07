@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Place searches</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+        html,
+        body,
+        #map-canvas {
+            height: 100%;
+            width: 100%;
+            margin: 0px;
+            padding: 0px
+        }
+
+        #content {
+            position: relative;
+            display: block;
+            min-height: 90px;
+            width: 160px;
+        }
+
+        #siteNotice {
+            display: block;
+            height: 60px;
+            width: 60px;
+            position: absolute;
+            top: 15px;
+            right: 0;
+        }
+
+        #siteNotice img {
+            height: 100%;
+            width: 100%;
+        }
+
+        .msg-cont {
+            position: absolute;
+            top: 0;
+            left: 0px;
+            right: 70px;
+            padding: 10px 0;
+            min-height: 60px;
+        }
+
+        .msg-cont p {
+            line-height: 1.2;
+            padding: 1px;
+            margin: 0;
+            font-size: 12px;
+        }
+
+        .my-mark {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            z-index: 9999999;
+        }
+
+        .my-marks {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: 30%;
+            z-index: 99999;
+            background: white;
+            overflow-y: auto;
+        }
+    </style>
+    <!--<script type="text/javascript" src="js/googlemap.js?v=3.exp&signed_in=true&libraries=places" ></script>-->
+    <!--<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCOHL-UHP_nTHYvbscGNiGTUduzwBwWH8Y&sensor=TRUE"></script>-->
+
+</head>
+
+<body>
+<button class="my-mark" id="mark-botton" onclick="show_marks()">Show My Marks</button>
+<div id="marks-canvas" class="my-marks">
+</div>
+<div id="map-canvas">
+</div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOHL-UHP_nTHYvbscGNiGTUduzwBwWH8Y&libraries=places&callback=initialize"
+        async defer></script>
+<script src="./js/jquery-3.3.1.min.js"></script>
+<script>
+    var map;
+    var infowindow;
+
+    var marks_flag = 0;
+
+    $("#marks-canvas").hide();
+
+    function show_marks() {
+        if (marks_flag == 0) {
+            $.ajax({
+                url: "./getMarks.php",
+                method: "GET",
+                success: function (res) {
+                    var marks = JSON.parse(res);
+                    var html = "";
+                    marks.forEach(function (mark, i) {
+                        html+="<div style=\"width: 80%;margin: auto;\">\n" +
+                            "        <h5>"+mark["name"]+"</h5>\n" +
+                            "        <p>"+mark["description"]+"</p>\n" +
+                            "        <p>"+mark["description2"]+"</p>\n" +
+                            "    </div>\n" +
+                            "    <hr>"
+                    })
+                    $("#marks-canvas").html(html);
+                }, error: function (res) {
+                    alert("Load Mark Fail!");
+                    console.log(res);
+                }
+            })
+            $("#marks-canvas").show();
+            $("#mark-botton").text("Close My Marks");
+            marks_flag = 1;
+        } else {
+            $("#marks-canvas").hide();
+            $("#mark-botton").text("Show My Marks");
+            marks_flag = 0;
+        }
+    }
+
+    function Mark(name, description, description2) {
+        $.ajax({
+            url: "./MarkRestaurant.php",
+            method: "POST",
+            data: {
+                name: name,
+                description: description,
+                description2: description2
+            },
+            success: function (res) {
+                console.log(res);
+                if (res == 1) {
+                    alert("Mark Success!!!");
+                } else {
+                    alert("Add Fail!!!" + res);
+                }
+            }, error: function (res) {
+                alert("error:" + res);
+            }
+        })
+    }
+
+    function initialize() {
+        //zomato api get the near restaurants and add to the google
+        function create_zomato_maker(item) {
+            var restaurant = item["restaurant"]
+            // console.log(restaurant);
+            // console.log(restaurant.location);
+            var marker = new google.maps.Marker({
+                map: map,
+                position: {
+                    lat: parseFloat(restaurant.location.latitude),
+                    lng: parseFloat(restaurant.location.longitude)
+                },
+                icon: 'img/beachflag.png'
+            });
+            marker.addListener('click', function () {
+                console.log(restaurant);
+                var photos = restaurant.featured_image;
+                var photoUrl;
+                if (!photos) {
+                    photoUrl = "img/result-no-thumbnail-1x.png";
+                } else {
+                    photoUrl = photos;
+                }
+                var contentString = '<div id="content">' +
+                    '<div id="siteNotice">' +
+                    '<img src="' + photoUrl + '" />' +
+                    '</div><div class="msg-cont">' +
+                    '<p id="msg">' + restaurant.name + '<p/>' +
+                    '<p id="msg">cuisines:&nbsp;' + restaurant.cuisines + '<p/>' +
+                    '<p id="msg">zomoto rank:&nbsp;' + restaurant.user_rating.rating_text + '(' + restaurant.user_rating.aggregate_rating + ')<p/>' +
+                    '<button onclick="Mark(\'' + restaurant.name + '\',\'' + restaurant.cuisines + '\',\'' + restaurant.user_rating.rating_text + '\')">Mark Restaurant</button></div></div>';
+                var infowindow = new google.maps.InfoWindow({
+                    content: contentString
+                });
+                infowindow.open(map, marker);
+            });
+        }
+
+        function zomato_api(lat, lng) {
+            $.ajax({
+                url: "https://developers.zomato.com/api/v2.1/geocode?lat=" + lat + "&lon=" + lng,
+                type: "GET",
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("user-key", "5218acaabe627fdbee2501422a61e495");
+                },
+                success: function (res) {
+                    var restaurants = res.nearby_restaurants;
+                    console.log(restaurants);
+                    for (var i = 0; i < restaurants.length; i++) {
+                        // console.log("aa");
+                        create_zomato_maker(restaurants[i])
+                    }
+                },
+                error: function (res) {
+                    console.log(res);
+                }
+            });
+        }
+
+        infowindow = new google.maps.InfoWindow();
+        //定位
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+
+                //If you need to use positioning, please use "pos" . "pyrmont" is the default location
+                var pos = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+               // pos.lat = 40.732013;
+                //pos.lng = -73.996155;
+                zomato_api(pos.lat, pos.lng);
+                var pyrmont = new google.maps.LatLng(39.915168, 116.403875);
+                map = new google.maps.Map(document.getElementById('map-canvas'), {
+                    center: pos,
+                    zoom: 17
+                });
+                //默认地点创建标记以及提示文字
+                var marker = new google.maps.Marker({
+                    map: map,
+                    position: pos
+                });
+
+                var request = {
+                    location: pos,
+                    radius: 1000,
+                    types: ['restaurant', 'food']
+                };
+                infowindow = new google.maps.InfoWindow();
+
+                var service = new google.maps.places.PlacesService(map);
+                var street = new google.maps.StreetViewService(map);
+                service.nearbySearch(request, callback);
+
+            }, function () {
+                handleLocationError(true, infoWindow, map.getCenter());
+            });
+        } else {
+            // Browser doesn't support Geolocation
+            handleLocationError(false, infoWindow, map.getCenter());
+        }
+
+    }
+
+    //查找周边
+    function callback(results, status) {
+//				console.log(results);
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+            for (var i = 0; i < results.length; i++) {
+                createMarker(results[i]);
+            }
+        }
+    }
+
+    //创建标记
+    function createMarker(place) {
+        var placeMsg = place;
+//              console.log(place);
+        var marker = new google.maps.Marker({
+            map: map,
+            position: place.geometry.location,
+            icon: 'img/icon-map2-small.png'
+        });
+        marker.addListener('click', function (placeMsg) {
+            var address = placeMsg;
+            console.log(placeMsg);
+            var photos = place.photos;
+            var photoUrl;
+            if (!photos) {
+                photoUrl = "img/result-no-thumbnail-1x.png";
+            } else {
+                photoUrl = place.photos[0].getUrl({'maxWidth': 60, 'maxHeight': 60});
+            }
+            var contentString = '<div id="content">' +
+                '<div id="siteNotice">' +
+                '<img src="' + photoUrl + '" />' +
+                '</div><div class="msg-cont">' +
+                '<p id="msg">' + place.name + '<p/>' +
+                '<p id="msg">' + place.vicinity + '<p/>' +
+                '<button onclick="Mark(\'' + place.name + '\',\'' + place.vicinity + '\',\'' + photoUrl + '\')">Mark Restaurant</button></div></div>';
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+            infowindow.open(map, marker);
+        });
+
+
+    }
+
+    // 监听页面的加载事件，载入地图
+    // google.maps.event.addDomListener(window, 'load', initialize);
+
+
+</script>
+</body>
+
+</html>

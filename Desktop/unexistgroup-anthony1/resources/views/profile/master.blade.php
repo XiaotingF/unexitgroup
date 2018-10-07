@@ -34,7 +34,7 @@
                 <a class="navbar-brand" href="/preference/{{Auth::user()->id}}">
                     Preference
                 </a>
-                <a class="navbar-brand" href="/matches/{{Auth::user()->id}}">
+                <a class="navbar-brand"  href="/matches/{{Auth::user()->id}}">
                     Matches
                 </a>
                 <a class="navbar-brand" href="/pending/{{Auth::user()->id}}">
