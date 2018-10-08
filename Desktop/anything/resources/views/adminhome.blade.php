@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -32,6 +33,8 @@
                         </tr>
                       </thead>
                       <tbody>
+                      <form method="post" action="/updatehome">
+                      <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         @foreach ($users as $key => $value)
                           <tr>
                             <td>{{ $key+1 }}</td>
@@ -46,11 +49,20 @@
                             <b style="color:red">Disabled</b>
                             @endif
                             <br>
-                            <select id="loginStatus">
+                           
+                            <button id="showSelectDiv{{$value->id}}"
+                            class="btn btn-primary btn-fill" type = "submit" value="submit">
+                            Change Status
+
+                            </button>
+                            <div id="selectDiv{{$value->id}}">
+
+                            <select id="loginStatus{{$value->id}}" name="status">
                             <option value="">select a option</option>
                             <option value="0">enable</option>
-                            <option value="1">Diable</option>
+                            <option value="1">Disable</option>
                             </select>
+                            </form>
             
 
 

@@ -25,8 +25,8 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/home') }}">
-                    {{ config('', 'Home') }}
+                <a class="navbar-brand" href="/home">
+                    Home
                 </a>
                 <a class="navbar-brand" href="/profile/{{Auth::user()->id}}">
                     Profile
@@ -34,7 +34,7 @@
                 <a class="navbar-brand" href="/preference/{{Auth::user()->id}}">
                     Preference
                 </a>
-                <a class="navbar-brand" href="/matches/{{Auth::user()->id}}">
+                <a class="navbar-brand"  href="/matches/{{Auth::user()->id}}">
                     Matches
                 </a>
                 <a class="navbar-brand" href="/pending/{{Auth::user()->id}}">
@@ -43,6 +43,10 @@
                 <a class="navbar-brand" href="/waiting/{{Auth::user()->id}}">
                     Waiting
                 </a>
+                <a class="navbar-brand" href="/matched/{{Auth::user()->id}}">
+                    Friend
+                </a>
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>

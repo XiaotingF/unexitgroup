@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('profile.master')
 
 @section('content')
 <div class="container">
@@ -13,8 +13,8 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                  
-                    <p>You're logger in as USER</p>
+
+                    You are logged in!
                 </div>
             </div>
         </div>

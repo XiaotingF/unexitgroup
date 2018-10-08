@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-lg-12">
             <div class="card">
-                <div class="card-header" style="text-align: center"><h2>Pending<h2></div>
+                <div class="card-header" style="text-align: center"><h2>Matched<h2></div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -24,12 +24,13 @@
                                 <div class="card-body">
                                   <h5 class="card-title">{{$single1->name}}</h5>
                                   <p class="card-text">Name: {{$single1->name}}<br>
-                                    Gender: {{$single1->gender}}
+                                    Gender: {{$single1->gender}}<br>
+                                    Email: {{$single1->email}}
+                                    <!--Profile:  <a href="/showsingle/"+$single1->id>View Profile</a>-->
+
                                   </p>
                                 </div>
-                                <div class="card-footer">
-                                  <small class="text-muted"></small>
-                                </div>
+                               
                       </div>
                   </div>
                   <?php endif; ?>
@@ -40,12 +41,11 @@
                                 <div class="card-body">
                                   <h5 class="card-title">{{$single2->name}}</h5>
                                   <p class="card-text">Name: {{$single2->name}}<br>
-                                    Gender: {{$single2->gender}}
+                                    Gender: {{$single2->gender}}<br>
+                                    Email: {{$single2->email}}
                                   </p>
                                 </div>
-                                <div class="card-footer">
-                                  <small class="text-muted"></small>
-                                </div>
+                                
                       </div>
                   </div>
                   <?php endif; ?>
@@ -56,12 +56,12 @@
                                 <div class="card-body">
                                   <h5 class="card-title">{{$single3->name}}</h5>
                                   <p class="card-text">Name: {{$single3->name}}<br>
-                                    Gender: {{$single3->gender}}
+                                    Gender: {{$single3->gender}}<br>
+                                    Email: {{$single3->email}}
+
                                   </p>
                                 </div>
-                                <div class="card-footer">
-                                  <small class="text-muted"></small>
-                                </div>
+                                
                       </div>
                   </div>
                   <?php endif; ?>
@@ -72,12 +72,12 @@
                                 <div class="card-body">
                                   <h5 class="card-title">{{$single4->name}}</h5>
                                   <p class="card-text">Name: {{$single4->name}}<br>
-                                    Gender: {{$single4->gender}}
+                                    Gender: {{$single4->gender}}<br>
+                                    Email: {{$single4->email}}
+
                                   </p>
                                 </div>
-                                <div class="card-footer">
-                                  <small class="text-muted"></small>
-                                </div>
+                               
                       </div>
                   </div>
                     <?php endif; ?>
@@ -88,12 +88,12 @@
                                 <div class="card-body">
                                   <h5 class="card-title">{{$single5->name}}</h5>
                                   <p class="card-text">Name: {{$single5->name}}<br>
-                                    Gender: {{$single5->gender}}
+                                    Gender: {{$single5->gender}}<br>
+                                    Email: {{$single5->email}}
+
                                   </p>
                                 </div>
-                                <div class="card-footer">
-                                  <small class="text-muted"></small>
-                                </div>
+                               
                       </div>
                   </div>
                   <?php endif; ?>

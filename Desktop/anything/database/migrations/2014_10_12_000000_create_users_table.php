@@ -46,15 +46,24 @@ class CreateUsersTable extends Migration
             $table->integer('p3')->default(0);
             $table->integer('p4')->default(0);
             $table->integer('p5')->default(0);
-            $table->integer('waiting1')->default(0);
-            $table->integer('waiting2')->default(0);
-            $table->integer('matched1')->default(0);
-            $table->integer('matched2')->default(0);
+            $table->integer('w1')->default(0);
+            $table->integer('w2')->default(0);
+            $table->integer('w3')->default(0);
+            $table->integer('w4')->default(0);
+            $table->integer('w5')->default(0);
+            $table->integer('m1')->default(0);
+            $table->integer('m2')->default(0);
+            $table->integer('m3')->default(0);
+            $table->integer('m4')->default(0);
+            $table->integer('m5')->default(0);
+          
+
+
+        
             $table->rememberToken();
             $table->timestamps();
             $table->boolean('admin')->default(0);
             $table->boolean('status')->default(0);
-
         });
     }
     /**

@@ -1,8 +1,6 @@
 <?php
 
 namespace App;
-//use Cog\Ban\Contracts\HasBans as HasBansContract;
-//use Cog\Ban\Traits\HasBans;
 
 //use App\Traits\Friendable;
 use Illuminate\Notifications\Notifiable;
@@ -11,7 +9,6 @@ use App\profile;
 class User extends Authenticatable
 {
     use Notifiable;
-    //use HasBans;
     //use Friendable;
 
     /**
@@ -39,7 +36,6 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\User');
     }
-    
     public function findForPassport($identifier){
         return User::orWhere('email', $identifier)->where('status',0)->first();
     

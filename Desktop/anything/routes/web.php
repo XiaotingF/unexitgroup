@@ -20,6 +20,8 @@ Route::get('matches/{id}','PostsController@matches');
 Route::get('/pending/{id}','PostsController@pending');
 Route::get('/waiting/{id}','PostsController@waiting');
 Route::get('/matched/{id}','PostsController@matched');
+
+
 Route::get('/preference/{id}', 'PostsController@preference')->name('preference');
 
 
@@ -28,14 +30,28 @@ Route::get('/test', function(){
 });
 
 Auth::routes();
+
 Route::group(['middleware' => 'auth'], function () {
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('profile/{id}', 'ProfileController@index');
+
 Route::post('/profile/{id}', 'ProfileController@update_avatar');
 Route::post('/updatePreferences', 'PostsController@updatePreferences');
-Route::get('/edit', 'ProfileController@edit');
+
 Route::post('/request', 'PostsController@request');
+
+Route::post('/accept', 'PostsController@accept');
+
+Route::post('/reject', 'PostsController@reject');
+
+
+
+
+
+Route::get('/edit', 'ProfileController@edit');
+
+Route::post('/showsingle/{id}','PostsController@showsingle');
 
 
 Route::get('/home', function() {
@@ -47,3 +63,6 @@ Route::get('/home', function() {
     }
   });
 });
+
+
+

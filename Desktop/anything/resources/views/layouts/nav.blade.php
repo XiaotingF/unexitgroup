@@ -22,7 +22,7 @@
                     <li><a href="/about_b4login">About</a></li>
                     <li><a href="/contact_b4login">Contact</a></li>
                     <li><a href="/answer_b4login">FAQs</a></li>
-                    <!--<li><a href='/preference'>Preference</a></li>-->
+                    <li><a href='/preference'>Preference</a></li>
                    <!-- <li><a href='/home'>Dashboard</a></li>
 
 
