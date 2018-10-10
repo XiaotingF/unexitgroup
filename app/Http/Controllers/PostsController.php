@@ -359,7 +359,6 @@ public function matches($id)
         foreach($targets as $single)
         {
             if($key=(string)$single->id!=$user->id){
-
             $value=0;
             $key=(string)$single->id;
             /*Q1*/
@@ -409,8 +408,28 @@ public function matches($id)
         $i = 0;
         foreach($results as $user_id => $user_sim)
         {
+            if($user_id == $user->m1)
+            {
+              continue;
+            }
+            if($user_id == $user->m2)
+            {
+              continue;
+            }
+            if($user_id == $user->m3)
+            {
+              continue;
+            }
+            if($user_id == $user->m4)
+            {
+              continue;
+            }
+            if($user_id == $user->m5)
+            {
+              continue;
+            }
             $i++;
-            if($i==+1)
+            if($i==1)
             {
                 $single1 = DB::table('users')->where('id',$user_id)->first();
                 $sim1 = round((100-($user_sim/$max)*100));
@@ -465,7 +484,6 @@ public function matches($id)
             }
             
         }
-
     return view('posts.matches', ['user'=>Auth::user(),
     'single1'=>$single1,
     'sim1'=>$sim1,
