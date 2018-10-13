@@ -47,6 +47,7 @@ Route::post('/reject', 'PostsController@reject');
 
 
 
+Route::post('/updatehome', 'PostsController@updatehome');
 
 
 Route::get('/edit', 'ProfileController@edit');

@@ -507,4 +507,18 @@ public function waiting($id)
     return view('posts.profile',['user'=>$user]);
     
     }
+    public function updatehome(Request $request)
+    {
+        
+        $request->input('p1');
+        $request->input('status');
+        $user = User::find($request->input('p1'));
+        $user->status = $request->input('status');
+    
+         $user->save();
+        
+      
+        return back(); return redirect()->back();
+        
+    }
 }
