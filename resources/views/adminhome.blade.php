@@ -33,9 +33,10 @@
                         </tr>
                       </thead>
                       <tbody>
-                      <form method="post" action="/updatehome">
-                      <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                      
                         @foreach ($users as $key => $value)
+                        <form method="post" action="/updatehome">
+                      <input type="hidden" name="_token" value="{{ csrf_token() }}">
                           <tr>
                             <td>{{ $key+1 }}</td>
                             <td>{{ $value->name }}</td>
@@ -49,19 +50,20 @@
                             <b style="color:red">Disabled</b>
                             @endif
                             <br>
+                            <input type="hidden" name="p1" value="<?php echo htmlspecialchars($value->id); ?>">
                            
-                            <button id="showSelectDiv{{$value->id}}"
-                            class="btn btn-primary btn-fill" type = "submit" value="submit">
-                            Change Status
-
-                            </button>
-                            <div id="selectDiv{{$value->id}}">
-
-                            <select id="loginStatus{{$value->id}}" name="status">
+                            <select id="status" name="status" required>
                             <option value="">select a option</option>
                             <option value="0">enable</option>
                             <option value="1">Disable</option>
                             </select>
+                            <button 
+                            class="btn btn-primary btn-fill" type = "submit">
+                            Change Status</button>
+
+                   
+
+                           
                             </form>
             
 
